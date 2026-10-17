@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
 import { PROYECTOS, dominio } from '../../core/proyectos';
+import { Salida } from '../../shared/salida/salida';
 
 @Component({
   selector: 'app-inicio',
-  imports: [TranslatePipe],
+  imports: [TranslatePipe, Salida],
   templateUrl: './inicio.html',
   styleUrl: './inicio.scss',
 })

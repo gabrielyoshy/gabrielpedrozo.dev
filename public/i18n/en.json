@@ -1,0 +1,17 @@
+{
+  "navegacion": {
+    "principal": "Main navigation",
+    "inicio": "Home",
+    "proyectos": "Projects",
+    "modoClaro": "Switch to light mode",
+    "modoOscuro": "Switch to dark mode",
+    "idioma": "Language"
+  },
+  "inicio": {
+    "bajada": "A collection of the projects I work on in my own time.",
+    "proyectos": "Projects"
+  },
+  "proyectos": {
+    "momentos": "A family timeline with photos and memories."
+  }
+}

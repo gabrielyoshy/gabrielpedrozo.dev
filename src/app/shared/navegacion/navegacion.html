@@ -17,16 +17,47 @@
     <span>{{ 'navegacion.proyectos' | translate }}</span>
   </button>
 
-  <button
-    type="button"
-    class="item abajo"
-    [attr.aria-label]="'navegacion.otroIdioma' | translate"
-    (click)="idioma.alternar()"
-  >
-    <!-- Muestra el idioma al que se pasa, no el actual. -->
-    @let otro = idioma.actual() === 'es' ? 'de' : 'es';
-    <span class="codigo" [attr.lang]="otro">{{ otro }}</span>
-  </button>
+  <!-- Muestra el idioma en uso; al tocarlo se despliega la lista. -->
+  <div #selectorIdioma class="idioma abajo">
+    <button
+      #botonIdioma
+      type="button"
+      class="item"
+      [class.abierto]="idiomaAbierto()"
+      [attr.aria-expanded]="idiomaAbierto()"
+      aria-controls="menu-idioma"
+      [attr.aria-label]="('navegacion.idioma' | translate) + ': ' + nombres[idioma.actual()]"
+      (click)="alternarIdioma()"
+    >
+      <span class="codigo">
+        {{ idioma.actual() }}
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5" /></svg>
+      </span>
+    </button>
+
+    @if (idiomaAbierto()) {
+      <ul id="menu-idioma" class="menu-idioma">
+        @for (codigo of idiomas; track codigo) {
+          @let enUso = codigo === idioma.actual();
+          <li>
+            <button
+              type="button"
+              class="opcion"
+              [class.en-uso]="enUso"
+              [attr.lang]="codigo"
+              [attr.aria-current]="enUso ? 'true' : null"
+              (click)="elegirIdioma(codigo)"
+            >
+              {{ nombres[codigo] }}
+              @if (enUso) {
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5" /></svg>
+              }
+            </button>
+          </li>
+        }
+      </ul>
+    }
+  </div>
 
   <button
     #botonTema
@@ -59,7 +90,7 @@
     <ul>
       @for (proyecto of proyectos; track proyecto.url) {
         <li>
-          <a class="enlace" [href]="proyecto.url">
+          <a class="enlace" [href]="proyecto.url" [appSalida]="proyecto">
             {{ proyecto.nombre }}
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" /></svg>
           </a>

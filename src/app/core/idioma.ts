@@ -2,8 +2,18 @@ import { DOCUMENT, Injectable, inject, signal } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { firstValueFrom } from 'rxjs';
 
-export const IDIOMAS = ['es', 'de'] as const;
+export const IDIOMAS = ['es', 'de', 'en'] as const;
 export type CodigoIdioma = (typeof IDIOMAS)[number];
+
+/**
+ * Nombre de cada idioma en sí mismo, no en el idioma actual: quien no
+ * entiende la página tiene que poder encontrar el suyo en la lista.
+ */
+export const NOMBRES: Record<CodigoIdioma, string> = {
+  es: 'Español',
+  de: 'Deutsch',
+  en: 'English',
+};
 
 const POR_DEFECTO: CodigoIdioma = 'es';
 const CLAVE = 'idioma';
@@ -27,9 +37,9 @@ export class Idioma {
     await this.usar(leerGuardado() ?? normalizar(this.traductor.getBrowserLang()), false);
   }
 
-  /** Con dos idiomas, el botón del menú simplemente pasa al otro. */
-  alternar(): Promise<void> {
-    return this.usar(this.actual() === 'es' ? 'de' : 'es');
+  /** Lo que elige el usuario en el menú; se recuerda para la próxima visita. */
+  elegir(codigo: CodigoIdioma): Promise<void> {
+    return this.usar(codigo);
   }
 
   private async usar(codigo: CodigoIdioma, recordar = true): Promise<void> {

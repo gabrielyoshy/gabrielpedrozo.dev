@@ -94,6 +94,14 @@ button {
   }
 }
 
+// Velo que cubre la pantalla al abrir un proyecto (ver shared/salida). Vive
+// en <body>, fuera de cualquier componente, por eso el estilo es global.
+.velo-salida {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+}
+
 // Cambio de tema (ver core/tema.ts): el modo nuevo se abre en círculo sobre
 // el anterior. Se apaga el fundido por defecto solo durante ese cambio, para
 // no tocar las transiciones entre páginas.

@@ -24,7 +24,13 @@ h1 {
   letter-spacing: -0.045em;
 }
 
+// background-clip: text pinta solo dentro de la caja del span, y el
+// letter-spacing negativo la deja más angosta que el último glifo: sin este
+// relleno, la "o" final quedaba cortada. El margen negativo lo compensa para
+// que el título no se corra.
 .degradado {
+  padding: 0.1em 0.12em 0.1em 0;
+  margin-right: -0.12em;
   background: var(--degradado);
   background-clip: text;
   -webkit-background-clip: text;
