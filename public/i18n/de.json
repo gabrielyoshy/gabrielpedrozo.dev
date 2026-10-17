@@ -1,0 +1,17 @@
+{
+  "navegacion": {
+    "principal": "Hauptnavigation",
+    "inicio": "Startseite",
+    "proyectos": "Projekte",
+    "modoClaro": "Zum hellen Modus wechseln",
+    "modoOscuro": "Zum dunklen Modus wechseln",
+    "otroIdioma": "Leer en español"
+  },
+  "inicio": {
+    "bajada": "Hier sammle ich die Projekte, an denen ich privat arbeite.",
+    "proyectos": "Projekte"
+  },
+  "proyectos": {
+    "momentos": "Eine Zeitleiste der Familie mit Fotos und Erinnerungen."
+  }
+}

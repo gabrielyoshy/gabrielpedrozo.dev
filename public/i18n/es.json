@@ -1,0 +1,17 @@
+{
+  "navegacion": {
+    "principal": "Navegación principal",
+    "inicio": "Inicio",
+    "proyectos": "Proyectos",
+    "modoClaro": "Pasar a modo claro",
+    "modoOscuro": "Pasar a modo oscuro",
+    "otroIdioma": "Auf Deutsch lesen"
+  },
+  "inicio": {
+    "bajada": "Acá junto los proyectos que hago por mi cuenta.",
+    "proyectos": "Proyectos"
+  },
+  "proyectos": {
+    "momentos": "Línea de tiempo familiar con fotos y recuerdos."
+  }
+}

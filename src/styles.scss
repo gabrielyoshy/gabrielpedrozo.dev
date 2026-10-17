@@ -1,0 +1,104 @@
+// Paleta tomada de angular.dev: grises neutros y el degradado
+// naranja → rosa → violeta como único acento.
+
+:root {
+  --naranja: oklch(63.32% 0.24 31.68);
+  --rosa: oklch(69.02% 0.277 332.77);
+  --violeta: oklch(53.18% 0.28 296.97);
+  --degradado: linear-gradient(90deg, var(--naranja) 0%, var(--rosa) 50%, var(--violeta) 100%);
+
+  --fuente: 'Inter Tight', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --radio: 0.75rem;
+  --ancho-riel: 5.5rem;
+  --ancho-panel: 15rem;
+  --transicion: 200ms ease;
+
+  color-scheme: light;
+  --fondo: #ffffff;
+  --fondo-elevado: #f9f9fa;
+  --hover: #f2f2f3;
+  --borde: #e4e4e7;
+  --texto: #0f0f11;
+  --texto-suave: #4a4a51;
+  --texto-tenue: #8e8e96;
+  --acento: var(--violeta);
+}
+
+:root[data-tema='oscuro'] {
+  color-scheme: dark;
+  --fondo: #0f0f11;
+  --fondo-elevado: #151518;
+  --hover: #1f1f23;
+  --borde: #2a2a2f;
+  --texto: #f2f2f3;
+  --texto-suave: #b8b8be;
+  --texto-tenue: #7c7c84;
+  --acento: oklch(70% 0.2 300);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: var(--fuente);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--acento);
+  outline-offset: 2px;
+  border-radius: 0.25rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+// Cambio de tema (ver core/tema.ts): el modo nuevo se abre en círculo sobre
+// el anterior. Se apaga el fundido por defecto solo durante ese cambio, para
+// no tocar las transiciones entre páginas.
+.cambiando-tema::view-transition-old(root),
+.cambiando-tema::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}

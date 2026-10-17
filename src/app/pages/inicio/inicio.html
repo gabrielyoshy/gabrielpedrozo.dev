@@ -1,0 +1,23 @@
+<section class="portada">
+  <p class="antetitulo">gabrielpedrozo.dev</p>
+  <h1>Gabriel <span class="degradado">Pedrozo</span></h1>
+  <p class="bajada">{{ 'inicio.bajada' | translate }}</p>
+</section>
+
+<section class="proyectos" aria-labelledby="titulo-proyectos">
+  <h2 id="titulo-proyectos">{{ 'inicio.proyectos' | translate }}</h2>
+  <ul class="lista">
+    @for (proyecto of proyectos; track proyecto.url) {
+      <li>
+        <a class="tarjeta" [href]="proyecto.url">
+          <h3>{{ proyecto.nombre }}</h3>
+          <p>{{ 'proyectos.' + proyecto.id | translate }}</p>
+          <span class="url">
+            {{ dominio(proyecto.url) }}
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" /></svg>
+          </span>
+        </a>
+      </li>
+    }
+  </ul>
+</section>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Gabriel Pedrozo</title>
+    <meta
+      name="description"
+      content="Página personal de Gabriel Pedrozo e índice de sus proyectos."
+    />
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap"
+    />
+
+    <script>
+      // Aplica el tema antes del primer pintado: si esperara a Angular, la
+      // página se vería un instante en claro antes de pasar a oscuro.
+      // La misma lógica vive en core/tema.ts, que toma el control después.
+      (function () {
+        var guardado = null;
+        try {
+          guardado = localStorage.getItem('tema');
+        } catch (e) {}
+        var oscuro =
+          guardado === 'oscuro' ||
+          (guardado !== 'claro' && matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.dataset.tema = oscuro ? 'oscuro' : 'claro';
+      })();
+    </script>
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
+</html>
