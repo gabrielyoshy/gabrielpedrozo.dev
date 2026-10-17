@@ -1,0 +1,20 @@
+# Scripts de instalación autorizados.
+#
+# pnpm NO ejecuta los postinstall de las dependencias por defecto: es una
+# medida de seguridad contra paquetes que corren código arbitrario al
+# instalarse. Cada uno se habilita a mano y queda registrado acá. Sin esto,
+# `pnpm install --frozen-lockfile` falla con ERR_PNPM_IGNORED_BUILDS.
+#
+# Estos cuatro son de la cadena de build de Angular y necesitan compilar
+# su binario nativo:
+#   esbuild           el compilador que usa Angular
+#   lmdb              caché persistente de build
+#   msgpackr-extract  acelerador de lmdb
+#   @parcel/watcher   vigilancia de archivos en ng serve
+#
+# Para habilitar uno nuevo:  pnpm approve-builds <paquete>
+allowBuilds:
+  '@parcel/watcher': true
+  esbuild: true
+  lmdb: true
+  msgpackr-extract: true
